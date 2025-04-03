@@ -1,0 +1,160 @@
+<!-- <div>
+
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>E-mail</th>
+            <th>Gender</th>
+            <th>Country</th>
+            <th>Date of birth</th>
+            <th>Job title</th>
+            <th colspan="2">Edit</th>
+        </tr>
+        <tr>
+            <td>Alfred</td>
+            <td>Michel</td>
+            <td>streat21</td>
+            <td>01096947780</td>
+            <td><a href="mailto:example&#64;gmail.com">alfred21&#64;gmail.com</a></td>
+            <td>Male</td>
+            <td>Germany </td>
+            <td>21/08/2004</td>
+            <td>Doctor</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            <td> <button type="button" class="btn btn-success">Update</button></td>
+        </tr>
+        <tr>
+            <td>Maria</td>
+            <td>ahmed</td>
+            <td>Dushoor axis</td>
+            <td>01253696511</td>
+            <td><a href="mailto:example&#64;gmail.com">maria209&#64;gmail.com</a></td>
+            <td>Female</td>
+            <td>Mexico</td>
+            <td>03/02/2001</td>
+            <td>Front-end developer</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            <td> <button type="button" class="btn btn-success">Update</button></td>
+
+        </tr>
+        <tr>
+            <td>Joe</td>
+            <td>Doe</td>
+            <td>gamal-abdelnasser</td>
+            <td>01094556390</td>
+            <td><a href="mailto:example&#64;gmail.com">Joe42&#64;gmail.com</a></td>
+            <td>Male</td>
+            <td>polland</td>
+            <td>11/05/1989</td>
+            <td>Back-end developer</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            <td> <button type="button" class="btn btn-success">Update</button></td>
+
+        </tr>
+        <tr>
+            <td>Michel</td>
+            <td>El-masry</td>
+            <td>Wahat Road</td>
+            <td>01044906345</td>
+            <td><a href="mailto:example&#64;gmail.com">meky22&#64;gmail.com</a></td>
+            <td>Male</td>
+            <td>Egypt</td>
+            <td>29/12/1999</td>
+            <td> Mobile developer </td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            <td> <button type="button" class="btn btn-success">Update</button></td>
+
+        </tr>
+        <tr>
+            <td>Youssef</td>
+            <td>Emad</td>
+            <td>Wakrrah</td>
+            <td>01084574150</td>
+            <td><a href="mailto:example&#64;gmail.com">youssef32&#64;gmail.com</a></td>
+            <td>Male</td>
+            <td>Qatar</td>
+            <td>1/05/1990</td>
+            <td> Problem Solver </td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            <td> <button type="button" class="btn btn-success">Update</button></td>
+
+        </tr>
+        <tr>
+            <td>Mohamed</td>
+            <td>Elshennawy</td>
+            <td>El-sheikh Zayed</td>
+            <td>010325456390</td>
+            <td><a href="mailto:example&#64;gmail.com">mo99&#64;gmail.com</a></td>
+            <td>Male</td>
+            <td>Egypyt</td>
+            <td>11/05/1989</td>
+            <td>Back-end developer</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            <td> <button type="button" class="btn btn-success">Update</button></td>
+
+        </tr>
+    </table>
+    <ul class="pagination">
+        <li><a href="1" class="active">1</a></li>
+        <li><a href="2">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="2">Next</a></li>
+    </ul>
+</div> -->
+
+<!-- phone-book.component.html -->
+<div class="container">
+    <h2>Phone Book</h2>
+    
+    <!-- Contacts Table -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Country</th>
+          <th>DOB</th>
+          <th>Job Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of paginatedContacts">
+          <td>{{ contact.FirstName }}</td>
+          <td>{{ contact.LastName }}</td>
+          <td>{{ contact.Address }}</td>
+          <td>{{ contact.Phone }}</td>
+          <td>{{ contact.Email }}</td>
+          <td>{{ contact.Gender }}</td>
+          <td>{{ contact.Country }}</td>
+          <td>{{ contact.DateOfBirth }}</td>
+          <td>{{ contact.JobTitle }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Pagination Controls -->
+    <div class="pagination">
+      <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+      
+      <span *ngFor="let page of getPagesArray(); let i = index">
+        <button 
+          [class.active]="currentPage === page"
+          (click)="goToPage(page)">
+          {{ page }}
+        </button>
+      </span>
+      
+      <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+      
+      <span class="page-info">
+        Page {{ currentPage }} of {{ totalPages }}
+      </span>
+    </div>
+  </div>
